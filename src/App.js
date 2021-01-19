@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React from 'react';
+import './Anim.css';
 import './App.css';
+import Intro from './components/Intro';
+import Home from './components/Home';
+import Nav from './components/Nav';
+import Top from './components/Footer';
+import { Switch, Route, HashRouter } from 'react-router-dom';
+import Project from './components/ProjectList';
+import Contact from './components/Contact';
+import Gallery from './components/Gallery';
+import ScrollToTop from './components/ScrollToTop';
 
-function App() {
+class App extends React.Component {
+  
+ 
+  render() {
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter basename='/'>
+      <ScrollToTop>
+        <div id='body'>
+        {/* <Intro /> */}
+        <Nav />
+        <Switch>
+          <Route path='/' exact component={Intro} />
+          <Route path='/Home' component={Home}/>
+          <Route path='/Project' component={Project} />
+          <Route path='/Contact' component={Contact} />
+          <Route path='/Gallery' component={Gallery} />
+        </Switch>
+        <Top />
+        </div>
+      </ScrollToTop>
+
+    </HashRouter>
+    
   );
+}
 }
 
 export default App;
