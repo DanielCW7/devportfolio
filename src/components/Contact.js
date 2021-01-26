@@ -1,6 +1,6 @@
 import React from 'react';
 import Desk from '../images/pc4.jpg'
-import Resume from '../resume.pdf' 
+// import Resume from '../resume.pdf' 
 
 function Contact() {
   return (
@@ -16,7 +16,7 @@ function Contact() {
       <div id='contactSection'>
         <div className='center' id='resume'>
           <span className='decoration'>&#x2913;</span>
-          <h4>Preview and download my resume <a href={Resume} target='_blank' rel="noreferrer"> here </a></h4>
+          {/* <h4>Preview and download my resume <a href={Resume} target='_blank' rel="noreferrer"> here </a></h4> */}
         </div>
 
         <div id='email'>
@@ -33,7 +33,7 @@ function Contact() {
       <div id='contactGrid'>
         
         <a href='https://www.facebook.com/connor.wilson.359'><div className='contactItem center' id='facebook'> 
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172" style={{transform: 'translateY(30%)'}}>
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172">
               <g transform="">
                 <g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
                   <path d="M0,172v-172h172v172z" fill="none"></path><path d="" fill="none"></path>
@@ -48,7 +48,7 @@ function Contact() {
 
 
         <a href='https://github.com/DanielCW7'><div className='contactItem center' id='github'>
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 172 172" style={{transform: 'translateY(35%)'}}>
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 172 172">
           <g transform="">
             <g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
               <path d="M0,172v-172h172v172z" fill="none"></path>
@@ -62,7 +62,7 @@ function Contact() {
 
 
         <a href='https://www.linkedin.com/in/daniel-wilson-a67706177/'><div className='contactItem center' id='linkedin'>   
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 172 172" style={{ transform: 'translateY(33%)' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 172 172" style={{ transform: 'translate(33%)' }}>
             <g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
               <path d="M0,172v-172h172v172z" fill="none"></path>
                 <path d="M64.844,111.8c-2.56481,0 -4.644,-2.07919 -4.644,-4.644v-42.312c0,-2.56481 2.07919,-4.644 4.644,-4.644h42.312c2.56481,0 4.644,2.07919 4.644,4.644v42.312c0,2.56481 -2.07919,4.644 -4.644,4.644z" fill="white"></path>

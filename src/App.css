@@ -54,7 +54,7 @@
   from { transform: translate(-50%) scale(1.2) rotate(0deg) }
   to { transform: translate(-50%) scale(1.2) rotate(360deg) }
 } 
-
+/* 
 #introContainer {
   position: fixed;
   top: 0;
@@ -127,7 +127,8 @@
   margin-top: 30vh;
   margin-bottom: 10vh;
   z-index: 1500;
-}
+} */
+
 
 /* ==================================================================== Nav styles */
 #mobileNavIcon {
@@ -137,12 +138,6 @@
   top: 15px;
   right: 15px;
   transition: all .3s;
-}
-
-#compassIcnBG { display: none }
-
-#mapIcn {
-  display: none;
 }
 
 #expandedNav {
@@ -171,12 +166,52 @@
   padding: 10px;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);  
+  transform: translateX(-50%); 
+  cursor: pointer; 
+}
+
+#navLG {
+  display: none;
+  position: absolute;
+  right: 20px;
+  z-index: 5000;
+  width: 30%;
+  padding: 0;
+}
+
+#navLG li {
+  border-bottom: 3px transparent solid;
+  color: white;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 10px;
+  transition: all .2s ease;
+}
+
+#navLG li:hover {  
+  border-bottom: 3px solid rgb(0, 255, 136);
 }
 
 .photoX {
   top: 90%;
   color: black;
+}
+
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  font-size: 3em;
+  top: 91%;
+  color:  rgb(0, 255, 136);
+  cursor: pointer;
+}
+
+.leftArrow {
+  left: 20%;
+}
+
+.rightArrow {
+  right: 20%;
 }
 
 #homeNav,
@@ -198,7 +233,28 @@
 #galleryNav:hover,
 #resumeNav:hover { color: rgb(225, 0, 255) }
 
-.titleName {
+#resume span {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  color: white;
+  transition: all .2s ease;
+}
+
+#resume span:hover {
+  color: black;
+  background-color: rgb(0, 255, 136);
+  border: none;
+  border-radius: 50%;
+}
+
+#resume p,
+#email p,
+#phoneNum p {
+  margin: 0;
+}
+
+#titleName {
   padding: 10px;
   top: 0px;
   color: aliceblue;
@@ -209,13 +265,13 @@
   font-size: .6rem;
 }
 
-.titleName h2,
-.titleName h4 {
+#titleName h2,
+#titleName h4 {
   margin: 0px;
   font-family: 'Montserrat', sans-serif;
 }
 
-.titleName h4 {
+#titleName h4 {
   letter-spacing: 11px;
   /* letter-spacing: 18px; */
   font-weight: 400;
@@ -230,6 +286,13 @@
   position: relative;
   display: block;
   height: 40vh;
+  overflow: hidden;
+  background: linear-gradient(-70deg, rgba(0, 82, 150, 0.9), rgba(225, 0, 255, 0.4));
+}
+
+#contactHome {
+  position: relative;
+  display: block;
   overflow: hidden;
   background: linear-gradient(-70deg, rgba(0, 82, 150, 0.9), rgba(225, 0, 255, 0.4));
 }
@@ -268,7 +331,6 @@
   border-radius: 25px;
   animation: moveLeft ease .7s;
   font-size: .8rem
-
 }
 
 #aboutHome img {
@@ -289,6 +351,12 @@
 }
 
 /* ==================================================================== Card styles */
+#projectHome img {
+  width: 140%;
+  height: auto;
+  position: relative;
+}
+
 #projectHomeLarge {
   display: none;
   width: 70%;
@@ -306,7 +374,8 @@
 }
 
 .homeLeftCard,
-.homeRightCard {
+.homeRightCard,
+#contactHome {
   margin: 30px 0px;
   border-radius: 80px 80px 80px 0px;
   position: relative;
@@ -545,12 +614,14 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 .photoGrid {
   width: 100%;
   margin-bottom: 80px;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .photo {
-  height: 200px;
+  height: 140px;
+  width: 80%;
   margin: 15px;
   border-radius: 20px;
   overflow: hidden;
@@ -589,47 +660,70 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 
 /* ==================================================================== Contact/Resume styles */
 
-#contactGrid {
-  width: 90%;
-  height: 150px;
-  line-height: 150px;
-  margin: 30px auto;
-  overflow: hidden;
-  display: grid;
-  grid-template-areas: 
-  'facebook github linkedin';
-  grid-auto-columns: 33% 33% 33%;
-}
-
-
-#facebook {
-  grid-area: facebook;
-  background-color: #039be5;
-}
+#facebook,
+#linkedin,
 #github {
-  grid-area: github;
-  background-color: #9b59b6;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;  
 }
-#linkedin {
-  grid-area: linkedin;
-  background-color: #3498db;
-}
+
+#facebook {background-color: #039be5}
+#github {background-color: #9b59b6}
+#linkedin {background-color: #3498db}
 
 .decoration {
   display: inline-block;
   font-size: 2em;
-  margin: 10px 20px 0 0;
+  margin: 10px;
 }
-
 
 #resume, #email, #phoneNum {
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
   margin: auto;
   width: 80%;
-  /* transform: translateX(-50%); */
+  color: white;
+  z-index: 3000;
+  animation: moveLeft ease 1s;
 }
 
+#facebook { 
+  grid-area: facebook; 
+  margin: 10px auto;
+  /* transform: translate(50%, 50%); */
+}
+#linkedin { 
+  grid-area: linkedin;
+  margin: 10px auto;
+  /* transform: translate(50%, 50%);  */
+}
+#github { 
+  grid-area: github; 
+  margin: 10px auto;
+  /* transform: translate(50%, 50%); */
+}
+
+#phoneNum { grid-area: phone; }
+#email { grid-area: email }
+#resume { grid-area: resume }
+
+  #contactHome {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 33% 33% 33%; */
+    grid-template-areas: 
+    'resume resume resume'
+    'email email email'
+    'phone phone phone'
+    'facebook github linkedin'
+  }
+
+@media (min-width: 425px) {
+  .photo {
+    height: 180px;
+  }
+}  
 /* ==================================================================== tablet */
 @media (min-width: 768px) {
 
@@ -639,18 +733,32 @@ p { font-family: 'Montserrat Alternates', sans-serif }
     width: 40px;
   }
 
-  .titleName {
+  .leftArrow {
+    left: 30%;
+  }
+
+  .rightArrow {
+    right: 30%;
+  }
+
+  #titleName {
     font-size: .8em;
   }
 
-  .titleName h4 {
+  #titleName h4 {
     letter-spacing: 14.5px;
   }
 
   .homeLeftCard,
-  .homeRightCard { 
+  .homeRightCard,
+  #contactHome { 
     margin: 40px;
-    animation: moveUp
+  }
+
+  #projectHome img,
+  #galleryHome img {
+    height: auto;
+    width: 100%;
   }
 
   #aboutHome {
@@ -713,12 +821,8 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 
   .projectDesc { width: 70% }
 
-  .photoGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .photo {
-    width: auto;
+    width: 300px;
     max-height: 300px;
   }
 
@@ -726,6 +830,21 @@ p { font-family: 'Montserrat Alternates', sans-serif }
     width: 150%;
     min-height: 300px;
     height: auto;
+  }
+  
+  #github,
+  #linkedin,
+  #facebook {
+    margin: 30px auto 0px;
+  }
+
+  
+  #contactHome {
+    grid-template-columns: 1fr .5fr;
+    grid-template-areas: 
+    'resume facebook'
+    'email linkedin'
+    'phone github'
   }
 }
 
@@ -737,6 +856,14 @@ p { font-family: 'Montserrat Alternates', sans-serif }
   #contactHomeText {
     display: block;
     position: absolute;
+  }
+
+  .leftArrow {
+    left: 35%;
+  }
+
+  .rightArrow {
+    right: 35%;
   }
 
   .projectCard {
@@ -765,11 +892,11 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 
   #aboutHomeLG img {
     width: auto;
-    height: 110%;
+    height: 130%;
   }
 
   #aboutText {
-    top: 25%;
+    top: 10%;
     font-size: .9em;
     line-height: 2.5;
   }
@@ -787,13 +914,6 @@ p { font-family: 'Montserrat Alternates', sans-serif }
   #mobileNavIcon,
   #navIconBackground {
     display: none;
-  }
-
-  #mapIcn {
-    display: block;
-    top: 30px;
-    left: 97%;
-    animation: bounce ease 2.5s infinite;
   }
 
   .centered {
@@ -821,26 +941,14 @@ p { font-family: 'Montserrat Alternates', sans-serif }
     transform: translateX(-50%) translateY(-50%);
   }
 
-  #homeNav { top: 40%; left: 50%}
-  #projectNav { top: 50%; left: 60% }
-  #galleryNav { top: 50%; left: 40% }
-  #contactNav { top: 60%; left: 50%}
-
   #navX {
     top: 20px;
     left: 97%;
   }
 
-  #compassIcnBG {
-    display: block;
-    position: absolute;
-    background-color: rgb(65, 255, 144);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  #navLG {
+    display: flex;
+    justify-content: space-evenly;
   }
 
   #compass {
@@ -858,13 +966,16 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 
   #projectHome { grid-area: project }
   #galleryHome { grid-area: gallery }
-  #contactHome { grid-area: home; }
+  #contactHome { 
+    grid-area: contact; 
+    margin: 20px;
+  }
 
   #projectHome img,
   #galleryHome img,
   #contactHome img {
     height: auto;
-    width: 100%;
+    width: 130%;
   }
 
   #homeGrid {
@@ -879,9 +990,9 @@ p { font-family: 'Montserrat Alternates', sans-serif }
   .homeLeftCard h1,
   .homeRightCard h1 {
     padding: 10px;
-    top: 50%;
+    top: 25%;
     left: 30%;
-    width: 45%;
+    width: 40%;
     color:  rgb(120, 245, 187);
     transform: translate(-50%);
     animation: moveLeft;
@@ -889,36 +1000,27 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 
   .homeLeftCard p,
   .homeRightCard p {
-    display: none;
+    animation: moveLeft .7s ease;
+    top: 25%;
+    left: 10%;
+    text-align: left;
   }
 
   #projectHomeLarge,
-  #galleryHomeLarge,
-  #contactHomeLarge {
+  #galleryHomeLarge {
     display: block;
   }
 
-  .photoGrid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  #contactHome {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 33% 33% 33%;
   }
 
-  #radioBtns {
-    text-align: right;
-    margin-right: 5%;
-  }
-
-  #resume, #email, #phoneNum {
-    transform: none;
-    width: 30%;
-    margin: 0;  
-  }
-
-  #contactSection {
-    display: flex;
-    margin: auto;
-    width: 100%;
-    justify-content: space-evenly;
-    margin-top: 60px;
+  #github,
+  #linkedin,
+  #facebook {
+    margin-top: 2rem;
+    margin-left: 0;
   }
 }
 
@@ -946,15 +1048,64 @@ p { font-family: 'Montserrat Alternates', sans-serif }
 /* ==================================================================== 4K */
 @media (min-width: 2560px) {
 
-  .titleName {
+  #projectHome p,
+  #galleryHome p {
+    top: 40%;
+  }
+
+  .leftArrow, 
+  .rightArrow {
+    top: 90.5%;
+  }
+    
+  .leftArrow {
+    left: 45%;
+  }
+
+  .rightArrow {
+    right: 45%;
+  }
+
+  #github,
+  #linkedin,
+  #facebook {
+    margin: auto;
+  }
+
+  #contactHome {
+    align-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 10% 10% 10%;
+    grid-template-areas: 
+    'resume'
+    'email'
+    'phone'
+    'facebook'
+    'github'
+    'linkedin'
+  }
+
+  /* #contactHome {
+    align-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    'resume resume resume'
+    'email email email'
+    'phone phone phone'
+    'facebook github linkedin'
+  } */
+
+  
+  #titleName {
     height: 200px;
   }
 
-  .titleName h2 {
+  #titleName h2 {
     font-size: 4em;
   }
   
-  .titleName h4 {
+  #titleName h4 {
     font-size: 2em;
     letter-spacing: 45px;
   }
@@ -968,29 +1119,28 @@ p { font-family: 'Montserrat Alternates', sans-serif }
     left: 80%;
   }
 
-  #aboutHomeLG img {
-    width: 100%;
-    height: auto;
-  }
+  /* #aboutText {
+    top: 10%;
+  } */
 
   #aboutHomeLG,
   #projectHome,
   #galleryHome,
   #contactHome {
-    height: 45vh;
+    height: 40vh;
   }
   
   #aboutHomeLG h1,
   #projectHome h1,
   #galleryHome h1,
   #contactHome h1 {
-    top: 45%;
+    top: 40%;
   }
 
   #galleryHomeText,
   #contactHomeText,
   #projectHomeText {
-    top: 45%;
+    top: 40%;
   }
 
   #aboutHomeLG img,
@@ -1005,7 +1155,6 @@ p { font-family: 'Montserrat Alternates', sans-serif }
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
     'about project gallery contact';
-    
   }
 
   .projectCard {
@@ -1020,6 +1169,5 @@ p { font-family: 'Montserrat Alternates', sans-serif }
     top: 2%;
     left: 97%;
   }
-
 }
 

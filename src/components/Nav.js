@@ -6,26 +6,26 @@ class Nav extends Component {
         super()
         this.expand = this.expand.bind(this);
         this.minimize = this.minimize.bind(this);
-        this.sticky = this.sticky.bind(this);
+        // this.sticky = this.sticky.bind(this);
     }
 
-    componentDidMount() {
-      window.addEventListener('scroll', this.sticky)
-    }
+    // componentDidMount() {
+    //   window.addEventListener('scroll', this.sticky)
+    // }
 
-    sticky() {
-    const element = document.getElementById('mapIcn');
-    const icon = element.offsetTop;
-    // console.log(icon, window.pageYOffset) 
+  //   sticky() {
+  //   const element = document.getElementById('mapIcn');
+  //   const icon = element.offsetTop;
+  //   // console.log(icon, window.pageYOffset) 
 
-    if (window.pageYOffset >= icon && window.pageYOffset >= 30) {
-      element.classList.add('sticky');
-      element.classList.remove('centered')
-    } else {
-      element.classList.remove('sticky')
-      element.classList.add('centered')
-    } 
-  }
+  //   if (window.pageYOffset >= icon && window.pageYOffset >= 30) {
+  //     element.classList.add('sticky');
+  //     element.classList.remove('centered')
+  //   } else {
+  //     element.classList.remove('sticky')
+  //     element.classList.add('centered')
+  //   } 
+  // }
 
     expand() {
        let i = document.getElementById('expandedNav')
@@ -38,78 +38,14 @@ class Nav extends Component {
     }
 
     render() {
-      window.addEventListener('mousemove', function(a) {
-
-      // mouse coordinates (A), dynamic border anchor (B), and constant center coordinate (C)
-        let Ax = a.x;
-        let Ay = a.y;
-        let Bx;
-        let By;
-        let Cx = window.innerWidth/2;
-        let Cy = window.innerHeight/2;
-        let sideA;
-        let sideB;
-        let sideC;
-        let radians;
-        let angle;
-        const compass = document.getElementById('compass');
       
-        if (Ax < window.innerWidth/2 && Ay < window.innerHeight/2) {
-          Bx = 0;
-          By = window.innerHeight/2;
-          sideA = Math.sqrt((Math.pow((Bx - Cx),2)) + (Math.pow((By - Cy),2))).toFixed(2);
-          sideB = Math.sqrt((Math.pow((Ax - Cx),2)) + (Math.pow((Ay - Cy),2))).toFixed(2);
-          sideC = Math.sqrt((Math.pow((Ax - Bx),2)) + (Math.pow((Ay - By),2))).toFixed(2);
-          radians = ((Math.pow((sideA),2)) + (Math.pow((sideB),2)) - (Math.pow((sideC),2))) / (2*(sideA*sideB));
-          angle = (Math.acos(radians)*(180/Math.PI)).toFixed(2);
-          compass.style.transform = ` translateY(-13%) rotate(${angle - 90 }deg)`;
-        } 
-        
-        else if (Ax > window.innerWidth/2 && Ay > window.innerHeight/2) { 
-          Bx = window.innerWidth;
-          By = window.innerHeight/2;
-          sideA = Math.sqrt((Math.pow((Bx - Cx),2)) + (Math.pow((By - Cy),2))).toFixed(2);
-          sideB = Math.sqrt((Math.pow((Ax - Cx),2)) + (Math.pow((Ay - Cy),2))).toFixed(2);
-          sideC = Math.sqrt((Math.pow((Ax - Bx),2)) + (Math.pow((Ay - By),2))).toFixed(2);
-          radians = ((Math.pow((sideA),2)) + (Math.pow((sideB),2)) - (Math.pow((sideC),2))) / (2*(sideA*sideB));
-          angle = (Math.acos(radians)*(180/Math.PI)).toFixed(2);
-          compass.style.transform = ` translateY(-13%) rotate(${angle - 90 }deg)`;
-        } 
-        
-        else if (Ax < window.innerWidth/2 && Ay > window.innerHeight/2) { 
-          Bx = window.innerWidth/2;
-          By = window.innerHeight;
-          sideA = Math.sqrt((Math.pow((Bx - Cx),2)) + (Math.pow((By - Cy),2))).toFixed(2);
-          sideB = Math.sqrt((Math.pow((Ax - Cx),2)) + (Math.pow((Ay - Cy),2))).toFixed(2);
-          sideC = Math.sqrt((Math.pow((Ax - Bx),2)) + (Math.pow((Ay - By),2))).toFixed(2);
-          radians = ((Math.pow((sideA),2)) + (Math.pow((sideB),2)) - (Math.pow((sideC),2))) / (2*(sideA*sideB));
-          angle = (Math.acos(radians)*(180/Math.PI)).toFixed(2);
-          compass.style.transform = ` translateY(-13%) rotate(${angle + 90 }deg)`;
-         } 
-         
-         else if (Ax > window.innerWidth/2 && Ay < window.innerHeight/2) {
-          Bx = window.innerWidth/2;
-          By = 0;
-          sideA = Math.sqrt((Math.pow((Bx - Cx),2)) + (Math.pow((By - Cy),2))).toFixed(2);
-          sideB = Math.sqrt((Math.pow((Ax - Cx),2)) + (Math.pow((Ay - Cy),2))).toFixed(2);
-          sideC = Math.sqrt((Math.pow((Ax - Bx),2)) + (Math.pow((Ay - By),2))).toFixed(2);
-          radians = ((Math.pow((sideA),2)) + (Math.pow((sideB),2)) - (Math.pow((sideC),2))) / (2*(sideA*sideB));
-          angle = (Math.acos(radians)*(180/Math.PI)).toFixed(2);
-          compass.style.transform = ` translateY(-13%) rotate(${angle}deg)`;
-         } 
-         
-         else {
-           return
-         }
-        
-      })
 
         return (
             <div>
-                <div className='titleName'>
+                <Link to='/Home'><div id='titleName'>
                     <h2> Connor Wilson </h2>
                     <h4 className='pullUp'> WEB DEV </h4>
-                </div>
+                </div></Link>
                 <div id='navIconBackground' onClick={this.expand}>
                   <div id='mobileNavIcon'>
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1366 768" enableBackground="new 0 0 1366 768">
@@ -134,21 +70,23 @@ class Nav extends Component {
                   </div>
                 </div>
 
-                <div id='mapIcn' className='centered' onClick={this.expand} onScroll={this.sticky}>
-                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172"><g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#2ecc71"><path d="M86,14.33333c-27.70633,0 -50.16667,22.46033 -50.16667,50.16667c0,28.423 31.562,70.37667 44.61967,86.50883c2.86667,3.54033 8.22733,3.54033 11.094,0c13.05767,-16.13217 44.61967,-58.08583 44.61967,-86.50883c0,-27.70633 -22.46033,-50.16667 -50.16667,-50.16667zM86,82.41667c-9.89717,0 -17.91667,-8.0195 -17.91667,-17.91667c0,-9.89717 8.0195,-17.91667 17.91667,-17.91667c9.89717,0 17.91667,8.0195 17.91667,17.91667c0,9.89717 -8.0195,17.91667 -17.91667,17.91667z">
-                </path></g></g></svg>
+                {/* <div id='mapIcn' className='centered' onClick={this.expand} onScroll={this.sticky}> */}
+                <div>
+                  <ul id='navLG'>
+                    <Link to ='/Home' style={{ textDecoration: 'none' }}><li> Home </li></Link>
+                    <Link to='/Project' style={{ textDecoration: 'none' }}><li> Projects </li></Link>
+                    <Link to='/Gallery' style={{ textDecoration: 'none' }}><li> Gallery </li></Link>
+                  </ul>
+                  {/* <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172"><g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#2ecc71"><path d="M86,14.33333c-27.70633,0 -50.16667,22.46033 -50.16667,50.16667c0,28.423 31.562,70.37667 44.61967,86.50883c2.86667,3.54033 8.22733,3.54033 11.094,0c13.05767,-16.13217 44.61967,-58.08583 44.61967,-86.50883c0,-27.70633 -22.46033,-50.16667 -50.16667,-50.16667zM86,82.41667c-9.89717,0 -17.91667,-8.0195 -17.91667,-17.91667c0,-9.89717 8.0195,-17.91667 17.91667,-17.91667c9.89717,0 17.91667,8.0195 17.91667,17.91667c0,9.89717 -8.0195,17.91667 -17.91667,17.91667z">
+                </path></g></g></svg> */}
                 </div>
 
                 <div id='expandedNav'>
                     <div id='mobileBackground'>
                         <Link to='/Home' id='homeNav' onClick={this.minimize}><h2> Home </h2></Link>
                         <Link to='/Project' id='projectNav' onClick={this.minimize}><h2> Projects </h2></Link>
-                        <Link to='/Contact' id='contactNav' onClick={this.minimize}><h2> Contact </h2></Link>
                         <Link to='/Gallery' id='galleryNav' onClick={this.minimize}><h2> Gallery </h2></Link>
                         <h2 id='navX' onClick={this.minimize}> X </h2>
-                        <div id='compassIcnBG'>
-                          <svg id='compass' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="96" height="96" viewBox="0 0 172 172"><g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="black"><path d="M86,14.33333c-39.5815,0 -71.66667,32.08517 -71.66667,71.66667c0,39.5815 32.08517,71.66667 71.66667,71.66667c39.5815,0 71.66667,-32.08517 71.66667,-71.66667c0,-39.5815 -32.08517,-71.66667 -71.66667,-71.66667zM121.23145,46.82129c2.61239,-0.30355 4.86068,2.42849 3.62532,5.08105l-20.9541,45.04362c-1.42617,3.06733 -3.88937,5.53054 -6.9567,6.9567l-45.04362,20.9541c-3.0315,1.41183 -6.17095,-1.72761 -4.75911,-4.75912l20.9541,-45.04362c1.42617,-3.06017 3.88937,-5.53054 6.9567,-6.9567l45.04362,-20.9541c0.37894,-0.17648 0.76059,-0.27858 1.1338,-0.32194zM86,78.11947c-4.37167,0 -7.88053,3.50886 -7.88053,7.88053c0,4.37167 3.50886,7.88053 7.88053,7.88053c4.37167,0 7.88053,-3.50886 7.88053,-7.88053c0,-4.37167 -3.50886,-7.88053 -7.88053,-7.88053z"></path></g></g></svg>
-                        </div>
                     </div>
                 </div>
              </div>
