@@ -578,6 +578,7 @@ p { font-family: 'Montserrat Alternates', sans-serif }
   transition: all ease .1s;
   margin: 5px;
   color: black;
+  cursor: pointer;
 }
 
 .buttonContainer button:hover {
@@ -599,10 +600,11 @@ p { font-family: 'Montserrat Alternates', sans-serif }
   color: white;
   transform: translateY(-50%);
   font-size: 1em;
+  cursor: pointer;
 }
 
-.demoBtn { background: linear-gradient(rgb(65, 255, 144), rgb(40, 156, 88)) }
-.srcBtn { background: linear-gradient(rgb(41, 241, 255), rgb(20, 131, 139))}
+.demoBtn { background: linear-gradient(rgb(65, 255, 144), rgb(40, 156, 88)); cursor: pointer;}
+.srcBtn { background: linear-gradient(rgb(41, 241, 255), rgb(20, 131, 139)); cursor: pointer;}
 
 /* ==================================================================== Gallery styles */
 
@@ -626,6 +628,7 @@ p { font-family: 'Montserrat Alternates', sans-serif }
   border-radius: 20px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 }
 
 .photo img {
